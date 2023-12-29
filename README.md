@@ -1,4 +1,4 @@
-# capacitor-esptouch
+# capacitor-esptouch(开发中)
 
 capacitor-esptouch
 
