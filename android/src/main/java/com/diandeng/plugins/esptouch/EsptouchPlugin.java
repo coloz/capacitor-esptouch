@@ -19,4 +19,19 @@ public class EsptouchPlugin extends Plugin {
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
     }
+
+    @PluginMethod
+    public void start(PluginCall call) {
+        call.resolve("");
+    }
+
+    @PluginMethod
+    public void stop(PluginCall call) {
+        call.resolve("");
+    }
+
+    @PluginMethod
+    public void onError(Exception e) {
+        call.resolve("");
+    }
 }

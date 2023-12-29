@@ -7,4 +7,12 @@ export class EsptouchWeb extends WebPlugin implements EsptouchPlugin {
     console.log('ECHO', options);
     return options;
   }
+
+  async start(options: { value: string }): Promise<{ value: string }> {
+    console.log('START', options);
+    return options;
+  }
+  async stop(options: { value: string }): Promise<{ value: string }> {
+    return options;
+  }
 }

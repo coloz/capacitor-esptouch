@@ -1,6 +1,6 @@
 {
   "name": "capacitor-esptouch",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "capacitor-esptouch",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -74,5 +74,8 @@
     "android": {
       "src": "android"
     }
+  },
+  "dependencies": {
+    "@capacitor/push-notifications": "^5.1.0"
   }
 }
