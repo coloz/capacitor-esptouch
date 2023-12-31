@@ -49,3 +49,11 @@ stop() => Promise<any>
 --------------------
 
 </docgen-api>
+
+## 参考引用
+[EsptouchForAndroid](https://github.com/EspressifApp/EsptouchForAndroid)  
+
+## 技术支持  
+如果你觉得该项目不错，可以打个star支持下  
+提供cordova/ionic开发、ESP8266/ESP32开发技术支持服务，300元/每小时  
+wechat: coloz999  
