@@ -52,6 +52,7 @@ stop() => Promise<any>
 
 ## 参考引用
 [EsptouchForAndroid](https://github.com/EspressifApp/EsptouchForAndroid)  
+[EsptouchForIOS](https://github.com/EspressifApp/EsptouchForIOS)  
 
 ## 技术支持  
 如果你觉得该项目不错，可以打个star支持下  
