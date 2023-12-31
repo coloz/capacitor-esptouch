@@ -1,7 +1,8 @@
 # capacitor-esptouch
-capacitor-esptouch
-· 支持esptouch v2
-· android已支持，ios待开发
+capacitor-esptouch  
+· 用于ionic/capacitor应用开发
+· 支持esptouch v2  
+· android已支持，ios待开发  
 
 ## Install
 
