@@ -1,6 +1,7 @@
-# capacitor-esptouch(开发中)
-
-capacitor-esptouch
+# capacitor-esptouch
+capacitor-esptouch
+· 支持esptouch v2
+· android已支持，ios待开发
 
 ## Install
 
@@ -13,7 +14,6 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
 * [`start(...)`](#start)
 * [`stop()`](#stop)
 
@@ -21,21 +21,6 @@ npx cap sync
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### echo(...)
-
-```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
-```
-
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
-
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
-
---------------------
-
 
 ### start(...)
 

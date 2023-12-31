@@ -13,6 +13,7 @@ import com.espressif.iot.esptouch2.provision.EspProvisioner;
 import com.espressif.iot.esptouch2.provision.EspProvisioningRequest;
 import com.espressif.iot.esptouch2.provision.EspProvisioningListener;
 import com.espressif.iot.esptouch2.provision.EspProvisioningResult;
+
 @CapacitorPlugin(name = "Esptouch")
 public class EsptouchPlugin extends Plugin {
     private String TAG = "Esptouch";
@@ -21,11 +22,11 @@ public class EsptouchPlugin extends Plugin {
 
     @PluginMethod
     public void start(PluginCall call) {
-        byte[] ssid = call.getString("ssid").getBytes();
-        byte[] bssid = call.getString("bssid").getBytes();
-        byte[] password = call.getString("password").getBytes();
-        byte[] aesKey = call.getString("aesKey").getBytes();
-        byte[] customData = call.getString("customData").getBytes();
+        String ssid = call.getString("ssid");
+//        String bssid = call.getString("bssid");
+        String password = call.getString("password");
+        String aesKey = call.getString("aesKey");
+        String customData = call.getString("customData");
 
         Context context= getContext();
 
@@ -66,13 +67,17 @@ public class EsptouchPlugin extends Plugin {
             }
         };
 
+//        Log.i(TAG, ssid);
+//        Log.i(TAG, password);
+//        Log.i(TAG, customData);
+//        Log.i(TAG, aesKey);
         EspProvisioningRequest request = new EspProvisioningRequest.Builder(context)
-            .setSSID(ssid)
-            .setBSSID(bssid)
-            .setPassword(password == null ? null : password)
-            .setAESKey(aesKey)
-            .setReservedData(customData)
-            .build();
+                .setSSID(ssid.getBytes())
+//                .setBSSID(bssid.getBytes())
+                .setPassword(password == null ? null : password.getBytes())
+                .setAESKey(aesKey.getBytes())
+                .setReservedData(customData.getBytes())
+                .build();
         mProvisioner.startProvisioning(request, listener);
     }
 
