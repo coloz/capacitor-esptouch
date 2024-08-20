@@ -26,12 +26,12 @@ npx cap sync
 ### start(...)
 
 ```typescript
-start(options: { ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }) => Promise<any>
+start(options: { ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }) => Promise<any>
 ```
 
-| Param         | Type                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------- |
-| **`options`** | <code>{ ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }</code> |
+| Param         | Type                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| **`options`** | <code>{ ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }</code> |
 
 **Returns:** <code>Promise&lt;any&gt;</code>
 

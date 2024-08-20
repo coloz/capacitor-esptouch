@@ -1,0 +1,1 @@
+{"version":3,"file":"definitions.js","sourceRoot":"","sources":["../../src/definitions.ts"],"names":[],"mappings":"","sourcesContent":["export interface EsptouchPlugin {\r\n  start(options: {\r\n    ssid: string,\r\n    bssid: string,\r\n    password?: string,\r\n    aesKey?: string,\r\n    customData?: string\r\n  }): Promise<any>;\r\n  \r\n  stop(): Promise<any>;\r\n}\r\n"]}
