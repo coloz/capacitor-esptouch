@@ -6,13 +6,13 @@ var capacitorEsptouch = (function (exports, core) {
     });
 
     class EsptouchWeb extends core.WebPlugin {
-        async start(
-        // @ts-ignore
-        options) {
-            throw this.unimplemented('Not implemented on web.');
+        async start(options) {
+            console.log('ESP-Touch start called with:', options);
+            throw this.unavailable('Not implemented on web.');
         }
         async stop() {
-            throw this.unimplemented('Not implemented on web.');
+            console.log('ESP-Touch stop called');
+            throw this.unavailable('Not implemented on web.');
         }
     }
 
@@ -22,8 +22,6 @@ var capacitorEsptouch = (function (exports, core) {
     });
 
     exports.Esptouch = Esptouch;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
 
     return exports;
 

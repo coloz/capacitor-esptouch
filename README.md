@@ -17,6 +17,7 @@ npx cap sync
 
 * [`start(...)`](#start)
 * [`stop()`](#stop)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -26,14 +27,16 @@ npx cap sync
 ### start(...)
 
 ```typescript
-start(options: { ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }) => Promise<any>
+start(options: { ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }) => Promise<EsptouchResult>
 ```
 
-| Param         | Type                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------ |
-| **`options`** | <code>{ ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }</code> |
+Start ESP-Touch provisioning process
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+| Param         | Type                                                                                                    | Description                         |
+| ------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| **`options`** | <code>{ ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }</code> | Configuration options for ESP-Touch |
+
+**Returns:** <code>Promise&lt;<a href="#esptouchresult">EsptouchResult</a>&gt;</code>
 
 --------------------
 
@@ -41,12 +44,24 @@ start(options: { ssid: string; bssid: string; password?: string; aesKey?: string
 ### stop()
 
 ```typescript
-stop() => Promise<any>
+stop() => Promise<void>
 ```
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+Stop the ESP-Touch provisioning process
 
 --------------------
+
+
+### Interfaces
+
+
+#### EsptouchResult
+
+| Prop          | Type                | Description                      |
+| ------------- | ------------------- | -------------------------------- |
+| **`bssid`**   | <code>string</code> | Device MAC address               |
+| **`ip`**      | <code>string</code> | Device IP address                |
+| **`message`** | <code>string</code> | Success message or error details |
 
 </docgen-api>
 

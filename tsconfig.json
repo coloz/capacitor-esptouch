@@ -3,18 +3,20 @@
     "allowUnreachableCode": false,
     "declaration": true,
     "esModuleInterop": true,
+    "exactOptionalPropertyTypes": false,
     "inlineSources": true,
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es2018"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "outDir": "dist/esm",
     "pretty": true,
     "sourceMap": true,
-    "strict": false,
-    "target": "es2017"
+    "strict": true,
+    "target": "es2018",
+    "skipLibCheck": true
   },
   "files": ["src/index.ts"]
 }

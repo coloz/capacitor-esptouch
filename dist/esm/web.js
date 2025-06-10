@@ -1,12 +1,12 @@
 import { WebPlugin } from '@capacitor/core';
 export class EsptouchWeb extends WebPlugin {
-    async start(
-    // @ts-ignore
-    options) {
-        throw this.unimplemented('Not implemented on web.');
+    async start(options) {
+        console.log('ESP-Touch start called with:', options);
+        throw this.unavailable('Not implemented on web.');
     }
     async stop() {
-        throw this.unimplemented('Not implemented on web.');
+        console.log('ESP-Touch stop called');
+        throw this.unavailable('Not implemented on web.');
     }
 }
 //# sourceMappingURL=web.js.map

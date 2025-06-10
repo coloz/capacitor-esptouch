@@ -7,34 +7,72 @@
     "methods": [
       {
         "name": "start",
-        "signature": "(options: { ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }) => Promise<any>",
+        "signature": "(options: { ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }) => Promise<EsptouchResult>",
         "parameters": [
           {
             "name": "options",
-            "docs": "",
-            "type": "{ ssid: string; bssid: string; password?: string; aesKey?: string; customData?: string; }"
+            "docs": "Configuration options for ESP-Touch",
+            "type": "{ ssid: string; bssid?: string | undefined; password?: string | undefined; aesKey?: string | undefined; customData?: string | undefined; }"
           }
         ],
-        "returns": "Promise<any>",
-        "tags": [],
-        "docs": "",
-        "complexTypes": [],
+        "returns": "Promise<EsptouchResult>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "options Configuration options for ESP-Touch"
+          }
+        ],
+        "docs": "Start ESP-Touch provisioning process",
+        "complexTypes": [
+          "EsptouchResult"
+        ],
         "slug": "start"
       },
       {
         "name": "stop",
-        "signature": "() => Promise<any>",
+        "signature": "() => Promise<void>",
         "parameters": [],
-        "returns": "Promise<any>",
+        "returns": "Promise<void>",
         "tags": [],
-        "docs": "",
+        "docs": "Stop the ESP-Touch provisioning process",
         "complexTypes": [],
         "slug": "stop"
       }
     ],
     "properties": []
   },
-  "interfaces": [],
+  "interfaces": [
+    {
+      "name": "EsptouchResult",
+      "slug": "esptouchresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "bssid",
+          "tags": [],
+          "docs": "Device MAC address",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "ip",
+          "tags": [],
+          "docs": "Device IP address",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "message",
+          "tags": [],
+          "docs": "Success message or error details",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    }
+  ],
   "enums": [],
   "typeAliases": [],
   "pluginConfigs": []

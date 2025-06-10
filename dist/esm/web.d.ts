@@ -7,6 +7,6 @@ export declare class EsptouchWeb extends WebPlugin implements EsptouchPlugin {
         password?: string;
         aesKey?: string;
         customData?: string;
-    }): Promise<string>;
+    }): Promise<any>;
     stop(): Promise<any>;
 }
