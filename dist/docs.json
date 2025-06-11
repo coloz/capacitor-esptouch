@@ -6,67 +6,212 @@
     "tags": [],
     "methods": [
       {
-        "name": "start",
-        "signature": "(options: { ssid: string; bssid?: string; password?: string; aesKey?: string; customData?: string; }) => Promise<EsptouchResult>",
-        "parameters": [
-          {
-            "name": "options",
-            "docs": "Configuration options for ESP-Touch",
-            "type": "{ ssid: string; bssid?: string | undefined; password?: string | undefined; aesKey?: string | undefined; customData?: string | undefined; }"
-          }
-        ],
-        "returns": "Promise<EsptouchResult>",
-        "tags": [
-          {
-            "name": "param",
-            "text": "options Configuration options for ESP-Touch"
-          }
-        ],
-        "docs": "Start ESP-Touch provisioning process",
-        "complexTypes": [
-          "EsptouchResult"
-        ],
-        "slug": "start"
-      },
-      {
-        "name": "stop",
+        "name": "startSync",
         "signature": "() => Promise<void>",
         "parameters": [],
         "returns": "Promise<void>",
         "tags": [],
-        "docs": "Stop the ESP-Touch provisioning process",
+        "docs": "Start synchronization packets",
         "complexTypes": [],
-        "slug": "stop"
+        "slug": "startsync"
+      },
+      {
+        "name": "stopSync",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Stop synchronization packets",
+        "complexTypes": [],
+        "slug": "stopsync"
+      },
+      {
+        "name": "startProvisioning",
+        "signature": "(request: EsptouchProvisioningRequest) => Promise<{ results: EsptouchProvisionResult[]; }>",
+        "parameters": [
+          {
+            "name": "request",
+            "docs": "",
+            "type": "EsptouchProvisioningRequest"
+          }
+        ],
+        "returns": "Promise<{ results: EsptouchProvisionResult[]; }>",
+        "tags": [],
+        "docs": "Start provisioning process",
+        "complexTypes": [
+          "EsptouchProvisionResult",
+          "EsptouchProvisioningRequest"
+        ],
+        "slug": "startprovisioning"
+      },
+      {
+        "name": "stopProvisioning",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Stop provisioning process",
+        "complexTypes": [],
+        "slug": "stopprovisioning"
+      },
+      {
+        "name": "close",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Close provisioner instance and release resources",
+        "complexTypes": [],
+        "slug": "close"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'provisioningResult', listenerFunc: (result: EsptouchProvisionResult) => void) => Promise<any>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'provisioningResult'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(result: EsptouchProvisionResult) => void"
+          }
+        ],
+        "returns": "Promise<any>",
+        "tags": [],
+        "docs": "Listen for provisioning results",
+        "complexTypes": [
+          "EsptouchProvisionResult"
+        ],
+        "slug": "addlistenerprovisioningresult-"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'syncEvent', listenerFunc: (event: { type: 'start' | 'stop' | 'error'; message?: string; }) => void) => Promise<any>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'syncEvent'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: { type: 'error' | 'start' | 'stop'; message?: string | undefined; }) => void"
+          }
+        ],
+        "returns": "Promise<any>",
+        "tags": [],
+        "docs": "Listen for sync events",
+        "complexTypes": [],
+        "slug": "addlistenersyncevent-"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'provisioningEvent', listenerFunc: (event: { type: 'start' | 'stop' | 'error'; message?: string; }) => void) => Promise<any>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'provisioningEvent'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: { type: 'error' | 'start' | 'stop'; message?: string | undefined; }) => void"
+          }
+        ],
+        "returns": "Promise<any>",
+        "tags": [],
+        "docs": "Listen for provisioning events",
+        "complexTypes": [],
+        "slug": "addlistenerprovisioningevent-"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Remove all listeners",
+        "complexTypes": [],
+        "slug": "removealllisteners"
       }
     ],
     "properties": []
   },
   "interfaces": [
     {
-      "name": "EsptouchResult",
-      "slug": "esptouchresult",
+      "name": "EsptouchProvisionResult",
+      "slug": "esptouchprovisionresult",
       "docs": "",
       "tags": [],
       "methods": [],
       "properties": [
         {
-          "name": "bssid",
-          "tags": [],
-          "docs": "Device MAC address",
-          "complexTypes": [],
-          "type": "string | undefined"
-        },
-        {
           "name": "ip",
           "tags": [],
-          "docs": "Device IP address",
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "mac",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "success",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "EsptouchProvisioningRequest",
+      "slug": "esptouchprovisioningrequest",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "ssid",
+          "tags": [],
+          "docs": "",
           "complexTypes": [],
           "type": "string | undefined"
         },
         {
-          "name": "message",
+          "name": "bssid",
           "tags": [],
-          "docs": "Success message or error details",
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "reservedData",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "aesKey",
+          "tags": [],
+          "docs": "",
           "complexTypes": [],
           "type": "string | undefined"
         }

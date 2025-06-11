@@ -1,0 +1,31 @@
+framework module EsptouchPlugin {
+    umbrella header "EspTouch-Bridging-Header.h"
+    
+    module ESPProvisioner {
+        header "ESPProvisioner.h"
+        export *
+    }
+    
+    module ESPProvisioningRequest {
+        header "ESPProvisioningRequest.h"
+        export *
+    }
+    
+    module ESPProvisioningResult {
+        header "ESPProvisioningResult.h"
+        export *
+    }
+    
+    module ESPUtils {
+        header "ESPUtils/ESP_NetUtil.h"
+        header "ESPUtils/ESP_CRC8.h"
+        header "ESPUtils/ESP_ByteUtil.h"
+        header "ESPUtils/ESP_WifiUtil.h"
+        header "ESPUtils/ESPAES.h"
+        header "ESPUtils/ESPTools.h"
+        export *
+    }
+    
+    export *
+    module * { export * }
+}
