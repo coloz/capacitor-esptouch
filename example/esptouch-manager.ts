@@ -1,4 +1,5 @@
-import { Esptouch, EsptouchProvisioningRequest, EsptouchProvisionResult } from 'capacitor-esptouch';
+import type { EsptouchProvisioningRequest, EsptouchProvisionResult } from '../src/definitions';
+import { Esptouch } from '../src/index';
 
 export class EsptouchManager {
   private isProvisioning = false;
@@ -57,7 +58,7 @@ export class EsptouchManager {
         bssid: params.bssid,
         password: params.password,
         reservedData: params.reservedData,
-        aesKey: params.aesKey
+        aesKey: params.aesKey,
       };
 
       // 开始配网
@@ -65,7 +66,6 @@ export class EsptouchManager {
       this.isProvisioning = true;
 
       console.log('配网已启动，等待设备响应...');
-
     } catch (error) {
       console.error('启动配网失败:', error);
       await this.cleanup();
@@ -119,7 +119,7 @@ export class EsptouchManager {
       console.log(`设备配网成功!`);
       console.log(`设备IP: ${result.ip}`);
       console.log(`设备MAC: ${result.mac}`);
-      
+
       // 这里可以添加成功后的业务逻辑
       this.onDeviceConnected(result);
     } else {
@@ -162,24 +162,21 @@ export class EsptouchManager {
         console.error('❌ 同步错误:', message);
         break;
     }
-  }
-
-  /**
+  }  /**
    * 设备连接成功处理
    */
-  private onDeviceConnected(result: EsptouchProvisionResult) {
+  private onDeviceConnected(result: EsptouchProvisionResult): void {
     // 在这里添加设备连接成功后的逻辑
     // 比如：保存设备信息、导航到设备页面等
-    console.log('设备连接成功，可以进行后续操作');
+    console.log('设备连接成功，可以进行后续操作', result);
     
     // 示例：自动停止配网
     this.stopDeviceProvisioning();
   }
-
   /**
    * 配网错误处理
    */
-  private onProvisioningError(message: string) {
+  private onProvisioningError(message: string): void {
     // 在这里添加错误处理逻辑
     // 比如：显示错误提示、重试逻辑等
     console.error('配网失败，需要处理错误:', message);
@@ -197,14 +194,13 @@ export class EsptouchManager {
       console.error('清理资源失败:', error);
     }
   }
-
   /**
    * 获取当前状态
    */
-  getStatus() {
+  getStatus(): { isProvisioning: boolean; isSyncing: boolean } {
     return {
       isProvisioning: this.isProvisioning,
-      isSyncing: this.isSyncing
+      isSyncing: this.isSyncing,
     };
   }
 

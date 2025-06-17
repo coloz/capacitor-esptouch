@@ -41,10 +41,7 @@ export interface EsptouchPlugin {
   /**
    * Listen for provisioning results
    */
-  addListener(
-    eventName: 'provisioningResult',
-    listenerFunc: (result: EsptouchProvisionResult) => void,
-  ): Promise<any>;
+  addListener(eventName: 'provisioningResult', listenerFunc: (result: EsptouchProvisionResult) => void): Promise<any>;
 
   /**
    * Listen for sync events

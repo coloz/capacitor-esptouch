@@ -1,11 +1,11 @@
 package com.diandeng.plugin.esptouch;
 
+import com.espressif.iot.esptouch2.provision.EspProvisioningResult;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
-import com.espressif.iot.esptouch2.provision.EspProvisionResult;
 
 @CapacitorPlugin(name = "Esptouch")
 public class EsptouchPlugin extends Plugin {
@@ -16,32 +16,34 @@ public class EsptouchPlugin extends Plugin {
     public void load() {
         super.load();
         implementation = new Esptouch(getContext());
-        implementation.setCallback(new Esptouch.EsptouchCallback() {
-            @Override
-            public void onSyncEvent(String type, String message) {
-                JSObject event = new JSObject();
-                event.put("type", type);
-                event.put("message", message);
-                notifyListeners("syncEvent", event);
-            }
+        implementation.setCallback(
+            new Esptouch.EsptouchCallback() {
+                @Override
+                public void onSyncEvent(String type, String message) {
+                    JSObject event = new JSObject();
+                    event.put("type", type);
+                    event.put("message", message);
+                    notifyListeners("syncEvent", event);
+                }
 
-            @Override
-            public void onProvisioningEvent(String type, String message) {
-                JSObject event = new JSObject();
-                event.put("type", type);
-                event.put("message", message);
-                notifyListeners("provisioningEvent", event);
-            }
+                @Override
+                public void onProvisioningEvent(String type, String message) {
+                    JSObject event = new JSObject();
+                    event.put("type", type);
+                    event.put("message", message);
+                    notifyListeners("provisioningEvent", event);
+                }
 
-            @Override
-            public void onProvisioningResult(EspProvisionResult result) {
-                JSObject resultObj = new JSObject();
-                resultObj.put("ip", result.getIP());
-                resultObj.put("mac", result.getMAC());
-                resultObj.put("success", result.isSuccess());
-                notifyListeners("provisioningResult", resultObj);
+                @Override
+                public void onProvisioningResult(EspProvisioningResult result) {
+                    JSObject resultObj = new JSObject();
+                    resultObj.put("ip", result.address != null ? result.address.getHostAddress() : "");
+                    resultObj.put("mac", result.bssid != null ? result.bssid : "");
+                    resultObj.put("success", result.address != null && result.bssid != null);
+                    notifyListeners("provisioningResult", resultObj);
+                }
             }
-        });
+        );
     }
 
     @PluginMethod
